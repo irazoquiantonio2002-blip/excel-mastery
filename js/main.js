@@ -168,6 +168,45 @@ const CONFIG = {
   const videos = $$('video');
   videos.forEach((v) => v.addEventListener('play', () => videos.forEach((o) => { if (o !== v) o.pause(); })));
 
+  /* ---- Video principal: arranca solo, en silencio y sin controles -------- *
+     - El archivo se pide hasta que la pagina termino de cargar, para no
+       competir con lo que se ve arriba (la portada ya se muestra mientras).
+     - Se reproduce cuando entra en pantalla, asi nadie se pierde el inicio, y
+       se pausa si sigue en silencio y se va de pantalla.
+     - Los navegadores solo permiten el autoplay en silencio: el boton activa el
+       sonido y reinicia el video desde el principio.
+     - Con "ahorro de datos", conexion 2G o movimiento reducido no se descarga
+       nada hasta que la persona toque el boton. */
+  const vsl = $('#vsl'); const vslBtn = $('#vslSound');
+  if (vsl && vslBtn) {
+    const conn = navigator.connection || {};
+    const auto = !conn.saveData && !/(^|-)2g$/.test(conn.effectiveType || '') && !reduceMotion;
+    const btnText = vslBtn.querySelector('span');
+    let sound = false;
+    const showBtn = (text) => { btnText.textContent = text; vslBtn.hidden = false; };
+    const attach = () => { if (!vsl.getAttribute('src')) { vsl.preload = 'metadata'; vsl.src = vsl.dataset.src; } };
+    const playMuted = () => vsl.play().then(() => showBtn('Activar sonido'), () => showBtn('Ver con sonido'));
+
+    vslBtn.addEventListener('click', () => {
+      sound = true; attach();
+      vsl.muted = false; vsl.currentTime = 0;
+      vsl.play().catch(() => {});
+      vslBtn.hidden = true;
+    });
+    vsl.addEventListener('ended', () => { if (!sound) showBtn('Ver con sonido'); });
+
+    if (auto && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(([e]) => {
+        if (sound || vsl.ended) return;
+        if (e.isIntersecting) playMuted(); else vsl.pause();
+      }, { threshold: 0.35 });
+      const start = () => { attach(); io.observe(vsl); };
+      document.readyState === 'complete' ? start() : addEventListener('load', start, { once: true });
+    } else {
+      showBtn('Ver video con sonido');
+    }
+  }
+
   /* ---- Barra de compra fija en movil ----------------------------------- */
   const sticky = $('#stickyBuy');
   const heroCta = $('#heroCta');

@@ -51,23 +51,28 @@
     <section class="band-dark glow hero" id="inicio">
       <div class="wrap">
         <span class="chip">Excel + Inteligencia Artificial · Curso completo en español</span>
-        <h1 class="reveal">Que Excel deje de darte miedo y empiece a darte <span class="hl">ventaja</span></h1>
-        <p class="sub reveal" style="--d:1">Aprende desde cero, paso a paso y con ayuda de la IA, para dejar de depender de otros y trabajar con la <strong>confianza de quien sí sabe lo que hace</strong>.</p>
+        <h1 class="enter">Que Excel deje de darte miedo y empiece a darte <span class="hl">ventaja</span></h1>
+        <p class="sub enter" style="--d:1">Aprende desde cero, paso a paso y con ayuda de la IA, para dejar de depender de otros y trabajar con la <strong>confianza de quien sí sabe lo que hace</strong>.</p>
 
         <!-- Mockups de los seis niveles, visibles de entrada (sin lazy: estan arriba del todo) -->
-        <div class="pack reveal" style="--d:2" aria-label="Los seis niveles del curso">
-          <img src="img/nivel-basico.webp" alt="Excel nivel básico" width="560" height="559" decoding="async">
-          <img src="img/nivel-intermedio.webp" alt="Excel nivel intermedio" width="454" height="560" decoding="async">
-          <img src="img/nivel-avanzado.webp" alt="Excel nivel avanzado" width="507" height="560" decoding="async">
-          <img src="img/nivel-experto.webp" alt="Excel nivel experto" width="483" height="560" decoding="async">
-          <img src="img/nivel-financiero.webp" alt="Excel financiero" width="544" height="560" decoding="async">
-          <img src="img/nivel-ingeniero.webp" alt="Excel ingeniero" width="525" height="560" decoding="async">
+        <div class="pack enter" style="--d:2" aria-label="Los seis niveles del curso">
+          <img src="img/nivel-basico.webp" alt="Excel nivel básico" width="401" height="400" decoding="async">
+          <img src="img/nivel-intermedio.webp" alt="Excel nivel intermedio" width="324" height="400" decoding="async">
+          <img src="img/nivel-avanzado.webp" alt="Excel nivel avanzado" width="362" height="400" decoding="async">
+          <img src="img/nivel-experto.webp" alt="Excel nivel experto" width="345" height="400" decoding="async">
+          <img src="img/nivel-financiero.webp" alt="Excel financiero" width="389" height="400" decoding="async">
+          <img src="img/nivel-ingeniero.webp" alt="Excel ingeniero" width="375" height="400" decoding="async">
         </div>
 
         <figure class="hero-video reveal" style="--d:3">
-          <h2 class="video-title">Dale play y <span class="hl">conoce el curso</span> antes de decidir</h2>
-          <div class="player">
-            <iframe src="https://drive.google.com/file/d/1b-fO6f3t4jWS5EaKr2JgN98pOmu6jhgE/preview" title="Video de presentación del curso" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+          <h2 class="video-title">Mira este video y <span class="hl">conoce el curso</span> antes de decidir</h2>
+          <!-- Sin controles. El archivo se pide al terminar de cargar la pagina y arranca solo (en silencio) al entrar en pantalla: ver js/main.js -->
+          <div class="player vsl">
+            <video id="vsl" muted playsinline preload="none" poster="img/vsl-poster.webp" width="1280" height="720" data-src="video/vsl-parte1.mp4" aria-label="Video de presentación del curso" disablepictureinpicture disableremoteplayback></video>
+            <button class="btn btn-cta pulse vsl-sound" id="vslSound" type="button" hidden>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              <span>Activar sonido</span>
+            </button>
           </div>
         </figure>
 
@@ -130,12 +135,12 @@
       </div>
 
       <div class="pack reveal" aria-label="Los seis niveles del curso">
-        <img src="img/nivel-basico.webp" alt="Excel nivel básico" width="560" height="559" loading="lazy" decoding="async">
-        <img src="img/nivel-intermedio.webp" alt="Excel nivel intermedio" width="454" height="560" loading="lazy" decoding="async">
-        <img src="img/nivel-avanzado.webp" alt="Excel nivel avanzado" width="507" height="560" loading="lazy" decoding="async">
-        <img src="img/nivel-experto.webp" alt="Excel nivel experto" width="483" height="560" loading="lazy" decoding="async">
-        <img src="img/nivel-financiero.webp" alt="Excel financiero" width="544" height="560" loading="lazy" decoding="async">
-        <img src="img/nivel-ingeniero.webp" alt="Excel ingeniero" width="525" height="560" loading="lazy" decoding="async">
+        <img src="img/nivel-basico.webp" alt="Excel nivel básico" width="401" height="400" loading="lazy" decoding="async">
+        <img src="img/nivel-intermedio.webp" alt="Excel nivel intermedio" width="324" height="400" loading="lazy" decoding="async">
+        <img src="img/nivel-avanzado.webp" alt="Excel nivel avanzado" width="362" height="400" loading="lazy" decoding="async">
+        <img src="img/nivel-experto.webp" alt="Excel nivel experto" width="345" height="400" loading="lazy" decoding="async">
+        <img src="img/nivel-financiero.webp" alt="Excel financiero" width="389" height="400" loading="lazy" decoding="async">
+        <img src="img/nivel-ingeniero.webp" alt="Excel ingeniero" width="375" height="400" loading="lazy" decoding="async">
       </div>
 
       <div class="wrap">
@@ -228,7 +233,7 @@
       <div class="narrow acc reveal">
         <details open>
           <summary>
-            <img class="lvl" src="img/nivel-basico.webp" alt="" width="560" height="559" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-basico.webp" alt="" width="401" height="400" loading="lazy" decoding="async">
             <h3>Excel Básico<small>220 videos</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -238,7 +243,7 @@
         </details>
         <details>
           <summary>
-            <img class="lvl" src="img/nivel-intermedio.webp" alt="" width="454" height="560" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-intermedio.webp" alt="" width="324" height="400" loading="lazy" decoding="async">
             <h3>Excel Intermedio<small>180 videos</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -248,7 +253,7 @@
         </details>
         <details>
           <summary>
-            <img class="lvl" src="img/nivel-avanzado.webp" alt="" width="507" height="560" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-avanzado.webp" alt="" width="362" height="400" loading="lazy" decoding="async">
             <h3>Excel Avanzado<small>200 videos</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -258,7 +263,7 @@
         </details>
         <details>
           <summary>
-            <img class="lvl" src="img/nivel-experto.webp" alt="" width="483" height="560" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-experto.webp" alt="" width="345" height="400" loading="lazy" decoding="async">
             <h3>Excel Experto<small>Más de 30 casos reales con archivos de práctica</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -268,7 +273,7 @@
         </details>
         <details>
           <summary>
-            <img class="lvl" src="img/nivel-financiero.webp" alt="" width="544" height="560" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-financiero.webp" alt="" width="389" height="400" loading="lazy" decoding="async">
             <h3>Excel Financiero<small>170 videos</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -278,7 +283,7 @@
         </details>
         <details>
           <summary>
-            <img class="lvl" src="img/nivel-ingeniero.webp" alt="" width="525" height="560" loading="lazy" decoding="async">
+            <img class="lvl" src="img/nivel-ingeniero.webp" alt="" width="375" height="400" loading="lazy" decoding="async">
             <h3>Excel Ingeniero<small>200 videos y material de apoyo</small></h3>
             <span class="icon chev i-caret-down" aria-hidden="true"></span>
           </summary>
@@ -362,7 +367,7 @@
               <h3>Preparación para la certificación de Microsoft Excel</h3>
               <p>Seis módulos con plantillas de práctica, simuladores de examen y las instrucciones para presentar tu certificación.</p>
             </div>
-            <video class="cell-video" controls playsinline preload="metadata" width="1920" height="1080" src="video/CURSO-CERTIFICACION-EXCEL-MICROSOFT-MO-200.mp4#t=0.5" aria-label="Adelanto del curso de preparación para la certificación">
+            <video class="cell-video" controls playsinline preload="none" poster="img/poster-certificacion.webp" width="1920" height="1080" src="video/CURSO-CERTIFICACION-EXCEL-MICROSOFT-MO-200.mp4" aria-label="Adelanto del curso de preparación para la certificación">
               Tu navegador no puede reproducir este video.
             </video>
           </article>
@@ -432,12 +437,12 @@
 
       <div class="offer-card reveal">
         <div class="pack" aria-hidden="true">
-          <img src="img/nivel-basico.webp" alt="" width="560" height="559" loading="lazy" decoding="async">
-          <img src="img/nivel-intermedio.webp" alt="" width="454" height="560" loading="lazy" decoding="async">
-          <img src="img/nivel-avanzado.webp" alt="" width="507" height="560" loading="lazy" decoding="async">
-          <img src="img/nivel-experto.webp" alt="" width="483" height="560" loading="lazy" decoding="async">
-          <img src="img/nivel-financiero.webp" alt="" width="544" height="560" loading="lazy" decoding="async">
-          <img src="img/nivel-ingeniero.webp" alt="" width="525" height="560" loading="lazy" decoding="async">
+          <img src="img/nivel-basico.webp" alt="" width="401" height="400" loading="lazy" decoding="async">
+          <img src="img/nivel-intermedio.webp" alt="" width="324" height="400" loading="lazy" decoding="async">
+          <img src="img/nivel-avanzado.webp" alt="" width="362" height="400" loading="lazy" decoding="async">
+          <img src="img/nivel-experto.webp" alt="" width="345" height="400" loading="lazy" decoding="async">
+          <img src="img/nivel-financiero.webp" alt="" width="389" height="400" loading="lazy" decoding="async">
+          <img src="img/nivel-ingeniero.webp" alt="" width="375" height="400" loading="lazy" decoding="async">
         </div>
 
         <ul class="stack">
@@ -628,7 +633,7 @@
         <!-- Video de presentacion (el de antes del hero), como empujon justo antes del CTA final -->
         <figure class="final-video reveal">
           <div class="player">
-            <video controls playsinline preload="metadata" width="1920" height="1080" src="video/video-nuevo-intro-de-linkedin.mp4#t=0.5" aria-label="Video de presentación del curso">
+            <video controls playsinline preload="none" poster="img/poster-presentacion.webp" width="1920" height="1080" src="video/video-nuevo-intro-de-linkedin.mp4" aria-label="Video de presentación del curso">
               Tu navegador no puede reproducir este video.
             </video>
           </div>
