@@ -47,21 +47,21 @@ const CONFIG = {
      Cada opinion: { texto, nombre, detalle, foto (opcional) }. Sin foto se
      muestra la inicial del nombre. */
   testimonios: [
-    { texto: 'Gracias a este curso, aprendi a usar Excel y conseguí el trabajo que quería', nombre: 'Luis Quintana', detalle: 'Alumno del curso', foto: 'assets/img/alumnos/alumno-1.jpg' },
-    { texto: 'Uy buenísima información, el curso de Excel me ayudó muchísimo para llevar mis cuentas de la Importaciones y ya voy por mi segunda importación', nombre: 'Ernesto Guevara', detalle: 'Alumno del curso', foto: 'assets/img/alumnos/alumno-3.jpg' },
-    { texto: 'Los recomiendo al 100% muy bien explicado, los entendí más fácil que a mi profesor. Si es verdad lo que prometen.', nombre: 'Enrique García', detalle: 'Alumno del curso', foto: 'assets/img/alumnos/alumno-4.png' },
-    { texto: 'No pensé que era cierto, por que está muy barato, pero si cumplieron y superaron mis expectativas. 5 estrellas.', nombre: 'Diana Verastegui', detalle: 'Alumna del curso', foto: 'assets/img/alumnos/alumno-5.jpg' },
-    { texto: 'Quiero darte las gracias infinitas.. me has enseñado mucho.. Tengo 30 años soy profesional y no sabía nada de excel... me siento más seguro ya que entraré a un nuevo empleo y los nervios me embargaban terriblemente de dar una entrevistas y hacer pruebas sin saber excel...', nombre: 'Oscar Carrillo', detalle: 'Alumno del curso', foto: 'assets/img/alumnos/alumno-2.jpg' },
+    { texto: 'Gracias a este curso, aprendi a usar Excel y conseguí el trabajo que quería', nombre: 'Luis Quintana', detalle: 'Alumno del curso', foto: 'img/alumnos/alumno-1.jpg' },
+    { texto: 'Uy buenísima información, el curso de Excel me ayudó muchísimo para llevar mis cuentas de la Importaciones y ya voy por mi segunda importación', nombre: 'Ernesto Guevara', detalle: 'Alumno del curso', foto: 'img/alumnos/alumno-3.jpg' },
+    { texto: 'Los recomiendo al 100% muy bien explicado, los entendí más fácil que a mi profesor. Si es verdad lo que prometen.', nombre: 'Enrique García', detalle: 'Alumno del curso', foto: 'img/alumnos/alumno-4.png' },
+    { texto: 'No pensé que era cierto, por que está muy barato, pero si cumplieron y superaron mis expectativas. 5 estrellas.', nombre: 'Diana Verastegui', detalle: 'Alumna del curso', foto: 'img/alumnos/alumno-5.jpg' },
+    { texto: 'Quiero darte las gracias infinitas.. me has enseñado mucho.. Tengo 30 años soy profesional y no sabía nada de excel... me siento más seguro ya que entraré a un nuevo empleo y los nervios me embargaban terriblemente de dar una entrevistas y hacer pruebas sin saber excel...', nombre: 'Oscar Carrillo', detalle: 'Alumno del curso', foto: 'img/alumnos/alumno-2.jpg' },
   ],
 
   /* RESULTADOS de alumnos ("Lo que nos van enviando"): trabajos, dashboards,
-     certificados. Pon las imagenes en assets/img/resultados/. Vacio = oculto.
-     { img: 'assets/img/resultados/a.png', alt: 'Dashboard de un alumno', nota: 'Enviado por un alumno' } */
+     certificados. Pon las imagenes en img/resultados/. Vacio = oculto.
+     { img: 'img/resultados/a.png', alt: 'Dashboard de un alumno', nota: 'Enviado por un alumno' } */
   resultados: [],
 
   /* CAPTURAS DE CHAT ("Lo que nos escriben"): mensajes reales de WhatsApp o
-     correo, con permiso. Pon las imagenes en assets/img/chats/. Vacio = oculto.
-     { img: 'assets/img/chats/a.png', alt: 'Conversacion con un alumno' } */
+     correo, con permiso. Pon las imagenes en img/chats/. Vacio = oculto.
+     { img: 'img/chats/a.png', alt: 'Conversacion con un alumno' } */
   chats: [],
 };
 
