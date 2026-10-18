@@ -1,0 +1,24 @@
+CARPETA DE IMAGENES
+===================
+
+USADAS EN index.html
+  nivel-*.webp, macros-vba.webp, power-bi.webp   Mockups de los cursos (lista inicial, temario y caja de precio)
+  matematicas.webp                                Bono de matematicas
+  guia-ia-excel-2026.webp, guia-dashboards.webp,
+  archivos-practica.webp                          Bonos de accion rapida
+  certificado-excel.png, certificado-word.png,
+  certificado-powerpoint.png                      Certificados
+  garantia-7-dias.png                             Sello en la tarjeta de precio
+  alumnos/                                        Fotos de los testimonios (CONFIG.testimonios en main.js)
+
+Los mockups son WebP con fondo transparente, recortados y reducidos al tamano al que
+se muestran (cada uno pesa entre 10 y 55 KB). Se generaron con Google Flow sobre fondo
+magenta liso, que luego se quito. Para cambiar uno: reemplaza el archivo conservando
+el nombre y actualiza width/height en index.html si cambia la proporcion.
+
+OTRAS CARPETAS (no las usa la pagina; puedes sacarlas del proyecto antes de publicar)
+  nuevos muckups/   Los 12 JPG de Flow con fondo magenta (originales de los mockups).
+  originales/       Descargas sin modificar de la pagina del productor.
+
+Las imagenes y videos del productor (assets/video, alumnos/, certificados) son material
+suyo: confirma con el que tengas permiso de uso como afiliado antes de publicar.
