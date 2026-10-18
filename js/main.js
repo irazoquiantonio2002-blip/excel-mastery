@@ -6,9 +6,9 @@
    Todo lo que normalmente editas esta aqui.
 
    IMPORTANTE (urgencia y escasez):
-   La fecha de cierre y los cupos que aparecen en la pagina DEBEN ser reales.
-   Si el precio de oferta no termina en esa fecha, o los bonos no se agotan,
-   mostrar un contador o "quedan X cupos" es publicidad enganosa: puede
+   El cierre diario y los cupos que aparecen en la pagina DEBEN ser reales.
+   Si el precio de oferta no cambia al terminar el dia, o los bonos no se
+   agotan, mostrar un contador o "quedan X cupos" es publicidad enganosa: puede
    costarte reclamos, reembolsos y la suspension de tu cuenta de afiliado.
    Los valores de abajo son de EJEMPLO. Ponlos reales o apaga la oferta con
    oferta.activa = false (se ocultan barra superior, contadores y cupos).
@@ -22,13 +22,13 @@ const CONFIG = {
   /* Precios mostrados. precioAntes debe ser el precio normal verdadero. */
   moneda: 'US$',
   precioAhora: 19,
-  precioAntes: 29,
+  precioAntes: 200,
 
   oferta: {
     activa: true,
-    /* Fecha y hora en que termina la promocion (hora local del visitante).
-       Formato: 'AAAA-MM-DDTHH:MM:SS'. Al llegar, todo lo de urgencia se oculta. */
-    termina: '2026-10-31T23:59:59',
+    /* La cuenta regresiva es del DIA: llega hasta la medianoche (hora local
+       del visitante) y a las 00:00 se reinicia en 24 h. Quien entra a las 8 am
+       ve ~16 h. Con activa = false se oculta todo lo de urgencia. */
     /* Cupos de los bonos de accion rapida. Actualiza "restantes" a mano. */
     cupos: { activo: true, total: 100, restantes: 37 },
   },
@@ -86,13 +86,14 @@ const CONFIG = {
   const topbar = $('#topbar');
   const setBarHeight = () => document.documentElement.style.setProperty('--bar-h', (topbar && !topbar.hidden ? topbar.offsetHeight : 0) + 'px');
 
-  const endAt = new Date(CONFIG.oferta.termina).getTime();
-  const validDate = Number.isFinite(endAt);
-  if (CONFIG.oferta.activa && !validDate) console.warn('[oferta] CONFIG.oferta.termina no es una fecha valida:', CONFIG.oferta.termina);
+  /* Proxima medianoche local: el "fin del dia". Se calcula en cada tick, asi
+     que al pasar las 00:00 la cuenta vuelve sola a 24 h sin recargar. */
+  const msToMidnight = () => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+  };
 
-  let offerOn = CONFIG.oferta.activa && validDate && endAt > Date.now();
   const hideOffer = () => {
-    offerOn = false;
     $$('[data-offer-only]').forEach((el) => { el.hidden = true; });
     setBarHeight();
   };
@@ -100,19 +101,16 @@ const CONFIG = {
   const counters = $$('[data-countdown]');
   const texts = $$('[data-countdown-text]');
   const tick = () => {
-    const left = endAt - Date.now();
-    if (left <= 0) { hideOffer(); clearInterval(timer); return; }
-    const d = Math.floor(left / 864e5), h = Math.floor(left / 36e5) % 24, m = Math.floor(left / 6e4) % 60, s = Math.floor(left / 1e3) % 60;
+    const left = msToMidnight();
+    const h = Math.floor(left / 36e5), m = Math.floor(left / 6e4) % 60, s = Math.floor(left / 1e3) % 60;
     counters.forEach((c) => {
-      $('[data-u="d"]', c).textContent = pad(d);
       $('[data-u="h"]', c).textContent = pad(h);
       $('[data-u="m"]', c).textContent = pad(m);
       $('[data-u="s"]', c).textContent = pad(s);
     });
-    texts.forEach((t) => { t.textContent = (d > 0 ? d + 'd ' : '') + pad(h) + ':' + pad(m) + ':' + pad(s); });
+    texts.forEach((t) => { t.textContent = pad(h) + ':' + pad(m) + ':' + pad(s); });
   };
-  let timer;
-  if (offerOn) { tick(); timer = setInterval(tick, 1000); } else { hideOffer(); }
+  if (CONFIG.oferta.activa) { tick(); setInterval(tick, 1000); } else { hideOffer(); }
 
   /* Cupos */
   const spots = $('[data-spots]');
