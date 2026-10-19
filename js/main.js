@@ -185,7 +185,7 @@ const CONFIG = {
     let sound = false;
     const showBtn = (text) => { btnText.textContent = text; vslBtn.hidden = false; };
     const attach = () => { if (!vsl.getAttribute('src')) { vsl.preload = 'metadata'; vsl.src = vsl.dataset.src; } };
-    const playMuted = () => vsl.play().then(() => showBtn('Activar sonido'), () => showBtn('Ver con sonido'));
+    const playMuted = () => vsl.play().then(() => showBtn('Toca aquí para activar sonido'), () => showBtn('Toca aquí para ver con sonido'));
 
     vslBtn.addEventListener('click', () => {
       sound = true; attach();
@@ -193,7 +193,7 @@ const CONFIG = {
       vsl.play().catch(() => {});
       vslBtn.hidden = true;
     });
-    vsl.addEventListener('ended', () => { if (!sound) showBtn('Ver con sonido'); });
+    vsl.addEventListener('ended', () => { if (!sound) showBtn('Toca aquí para ver con sonido'); });
 
     if (auto && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver(([e]) => {
@@ -203,7 +203,7 @@ const CONFIG = {
       const start = () => { attach(); io.observe(vsl); };
       document.readyState === 'complete' ? start() : addEventListener('load', start, { once: true });
     } else {
-      showBtn('Ver video con sonido');
+      showBtn('Toca aquí para ver con sonido');
     }
   }
 
