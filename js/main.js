@@ -21,6 +21,7 @@ const CONFIG = {
 
   /* Precios mostrados. precioAntes debe ser el precio normal verdadero. */
   moneda: 'US$',
+  monedaISO: 'USD', /* para Meta (InitiateCheckout) */
   precioAhora: 19,
   precioAntes: 200,
 
@@ -206,6 +207,39 @@ const CONFIG = {
       showBtn('Toca aquí para ver con sonido');
     }
   }
+
+  /* ---- Meta: Conversions API (servidor) + pixel, sin contar doble ---------
+     Cada evento sale dos veces con el MISMO event_id: una por el pixel del
+     navegador y otra por /api/capi (api/capi.js), que lo reenvia a Meta desde
+     el servidor. Meta los junta y cuenta uno solo; si un bloqueador de anuncios
+     frena el pixel, el del servidor igual llega.
+     - PageView: ya lo dispara el pixel del <head>; aqui se manda su copia.
+     - InitiateCheckout: al tocar cualquier boton de compra (la compra en si
+       ocurre en Hotmart, asi que este es el ultimo paso que ve tu pagina). */
+  const getCookie = (n) => { const c = document.cookie.split('; ').find((x) => x.startsWith(n + '=')); return c ? c.slice(n.length + 1) : ''; };
+  const capi = (name, id, extra) => {
+    try {
+      const fbclid = new URLSearchParams(location.search).get('fbclid');
+      const fbc = getCookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : '');
+      fetch('/api/capi', {
+        method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event_name: name, event_id: id, url: location.href, fbp: getCookie('_fbp'), fbc, ...extra }),
+      }).catch(() => {});
+    } catch (e) { /* el seguimiento nunca debe romper la pagina */ }
+  };
+
+  if (window.__pvId) {
+    /* Un momento despues de cargar: asi el pixel ya dejo su cookie _fbp y el evento va mas completo. */
+    const enviarPV = () => setTimeout(() => capi('PageView', window.__pvId), 1500);
+    document.readyState === 'complete' ? enviarPV() : addEventListener('load', enviarPV, { once: true });
+  }
+
+  $$('[data-buy]').forEach((a) => a.addEventListener('click', () => {
+    const id = 'ic_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    const datos = { value: CONFIG.precioAhora, currency: CONFIG.monedaISO };
+    if (window.fbq) window.fbq('track', 'InitiateCheckout', datos, { eventID: id });
+    capi('InitiateCheckout', id, datos);
+  }));
 
   /* ---- Barra de compra fija en movil ----------------------------------- */
   const sticky = $('#stickyBuy');

@@ -27,7 +27,9 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '2673074726462169');
-  fbq('track', 'PageView');
+  /* eventID: el mismo id viaja al servidor (js/main.js -> /api/capi) y Meta cuenta el PageView una sola vez */
+  window.__pvId = 'pv_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  fbq('track', 'PageView', {}, { eventID: window.__pvId });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=2673074726462169&ev=PageView&noscript=1"
